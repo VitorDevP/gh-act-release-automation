@@ -9,6 +9,10 @@ inputs:
     description: 'Release branch name'
     required: false,
     default: 'release'
+  release-tag:
+    description: 'Release tag name'
+    required: false,
+    default: 'release-candidate'
 outputs:
   release-branch:
     description: 'Release branch name'
