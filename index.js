@@ -11,7 +11,7 @@ async function createReleaseBranch(baseBranch, releaseBranch){
         core.debug(`Check if branch already exists`);
 
         await toolkit.rest.repos.getBranch({
-            repo: github.context,
+            ...github.context.repo,
             branch: releaseBranch
         })
     } catch (err) {
