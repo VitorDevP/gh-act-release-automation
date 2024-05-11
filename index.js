@@ -5,13 +5,16 @@ async function createReleaseBranch(baseBranch, releaseBranch){
     const date = new Date();
     core.debug(`Creating release branch from ${baseBranch}`);
 
+    branch = branch.replace('refs/heads/', '');
+    const branch = `refs/heads/${branch}`;
+
     const toolkit = github.getOctokit(getGithubToken());
 
     try{
         core.debug(`Check if branch already exists`);
 
         await toolkit.rest.repos.getBranch({
-            repo: github.context,
+            ...github.context.repo,
             branch: releaseBranch
         })
     } catch (err) {
@@ -20,8 +23,8 @@ async function createReleaseBranch(baseBranch, releaseBranch){
 
             const branchCreated = await toolkit.rest.git.createRef({
                 ref: releaseBranch,
-                sha: context.sha,
-                ...context.repo,
+                sha: github.context.sha,
+                ...github.context.repo,
             });
 
             core.debug(`Branch ${releaseBranch} created`);
