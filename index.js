@@ -28,9 +28,9 @@ async function createReleaseBranch(baseBranch, releaseBranch){
 }
 
 function getGithubToken(){
-    const token = process.env.TOKEN;
+    const token = process.env.GITHUB_TOKEN;
     
-    if(!token) throw new Error();
+    if(!token) throw new Error('No token defined in the environment variables');
 
     return token;
 }
