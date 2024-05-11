@@ -1,0 +1,17 @@
+name: 'Release automation'
+description: 'Create a release from base branch'
+inputs:
+  base-branch:
+    description: 'Base branch that release branch will be created from',
+    required: true
+    default: 'develop'
+  release-branch:
+    description: 'Release branch name',
+    required: false,
+    default: 'release'
+outputs:
+  release-branch:
+    description: 'Release branch name'
+runs:
+  using: 'node20'
+  main: 'index.js'
