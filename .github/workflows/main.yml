@@ -1,0 +1,16 @@
+name: Main
+
+on:
+  push:
+    branches: ['master']
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Release
+        uses: VitorDevP/gh-act-release-automation@v1
+        with:
+          base-branch: 'develop'
