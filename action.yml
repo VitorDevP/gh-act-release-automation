@@ -6,7 +6,7 @@ inputs:
     required: true
     default: 'develop'
   release-branch:
-    description: 'Release branch name',
+    description: 'Release branch name'
     required: false,
     default: 'release'
 outputs:
